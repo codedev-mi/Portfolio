@@ -90,7 +90,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 **Shruti Bhangale**  
 - Email: shrutipb1601@gmail.com
 - LinkedIn: [Your LinkedIn Profile](https://linkedin.com)
-- GitHub: [shrutipb1601](https://github.com/shrutipb1601)
+- GitHub: [shruti](https://github.com/shrutipb1601)
 
 ---
 
