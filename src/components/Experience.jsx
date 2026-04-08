@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Calendar, Briefcase, ChevronRight } from 'lucide-react';
+import { Briefcase, Calendar, ChevronRight } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -13,43 +13,43 @@ const Experience = () => {
             company: "Cofa Studio",
             role: "Frontend Web Developer Intern",
             date: "Jan 2026 - Present",
+            location: "Remote",
             description: [
-                "Developed pixel-perfect, responsive user interfaces using React.js and Tailwind CSS.",
-                "Collaborated with UI/UX designers to translate Figma mockups into functional apps.",
-                "Optimized frontend performance for faster load times and smoother animations.",
-                "Integrated RESTful APIs and managed global application state."
+                "Developing pixel-perfect, responsive user interfaces using React.js and Tailwind CSS.",
+                "Engineering high-performance frontend components, streamlining UI/UX from Figma designs.",
+                "Optimizing application state management and API integration for seamless user flows."
             ],
-            tech: ["HTML5", "CSS3", "JavaScript (ES6+)", "React.js", "React.js", "Tailwind CSS", "Responsive Web Design", "UI/UX Implementation", "Figma", "REST APIs", "Redux"]
+            tech: ["React.js", "Tailwind CSS", "GSAP", "Redux", "Figma"]
         },
         {
             company: "Cognifyz",
             role: "Web Development Intern",
             date: "Jan 2025 - Feb 2025",
+            location: "Nashik, India",
             description: [
-                "Built dynamic web apps using HTML, CSS, JavaScript, Node.js, and Express.",
-                "Implemented interactive forms with strong client/server-side validation.",
-                "Improved UI/UX using Bootstrap, animations, and dynamic DOM updates.",
-                "Optimized backend performance with middleware and caching strategies."
+                "Architected dynamic web applications using Node.js and Express.",
+                "Implemented secure form handling and server-side validation protocols.",
+                "Enhanced core user engagement through intuitive UI updates and performance tuning."
             ],
-            tech: ["HTML/CSS", "JavaScript", "Node.js", "Express", "EJS"]
+            tech: ["Node.js", "Express", "JavaScript", "HTML5", "CSS3"]
         }
     ];
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            gsap.fromTo(".experience-card",
-                { y: 50, opacity: 0 },
+            gsap.fromTo(".experience-item",
+                { y: 30, opacity: 0 },
                 {
-                    scrollTrigger: {
-                        trigger: sectionRef.current,
-                        start: "top 85%",
-                        toggleActions: "play none none reverse"
-                    },
                     y: 0,
                     opacity: 1,
-                    duration: 0.8,
-                    stagger: 0.1,
-                    ease: "power3.out"
+                    duration: 1,
+                    stagger: 0.2,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: sectionRef.current,
+                        start: "top 80%",
+                        toggleActions: "play none none reverse"
+                    }
                 }
             );
         }, sectionRef);
@@ -57,60 +57,51 @@ const Experience = () => {
     }, []);
 
     return (
-        <section id="experience" ref={sectionRef} className="py-24 px-6 md:px-20 max-w-7xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-16 text-center">Professional Journey</h2>
+        <section id="experience" ref={sectionRef} className="py-32 px-6 md:px-20 max-w-5xl mx-auto border-t border-white/5">
+            <div className="flex flex-col mb-20">
+                <span className="text-accent font-mono tracking-widest uppercase text-xs mb-4">Professional History</span>
+                <h2 className="text-5xl md:text-6xl font-bold text-white tracking-tighter">
+                    Work <span className="text-gray-500 italic">Experience</span>
+                </h2>
+            </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+            <div className="space-y-16">
                 {experiences.map((exp, index) => (
-                    <div
-                        key={index}
-                        className="experience-card group relative bg-white/5 hover:bg-white/10 backdrop-blur-sm border border-white/10 hover:border-accent/30 rounded-2xl p-6 md:p-8 transition-all duration-300 w-full h-full flex flex-col"
-                    >
-                        {/* Content Wrapper to ensure spacing */}
-                        <div className="flex flex-col h-full">
+                    <div key={index} className="experience-item group relative flex flex-col md:flex-row gap-8 md:gap-20 pb-16 border-b border-white/5 last:border-0 last:pb-0">
+                        {/* Date & Location */}
+                        <div className="md:w-1/4 flex flex-col gap-2">
+                            <span className="text-sm font-medium text-white/40 tracking-wider flex items-center gap-2">
+                                <Calendar size={14} className="text-accent" />
+                                {exp.date}
+                            </span>
+                            <span className="text-[10px] uppercase tracking-widest text-gray-600 font-bold">
+                                {exp.location}
+                            </span>
+                        </div>
 
-                            {/* Header Section */}
-                            <div className="mb-6">
-                                <div className="flex flex-col gap-1 mb-3">
-                                    <h3 className="text-2xl font-bold text-white group-hover:text-accent transition-colors duration-300">
-                                        {exp.role}
-                                    </h3>
-                                    <span className="text-xl text-purple-400 font-medium">
-                                        {exp.company}
-                                    </span>
-                                </div>
-
-                                <div className="flex items-center gap-3 flex-wrap">
-                                    <div className="flex items-center gap-2 text-secondary text-sm bg-white/5 w-fit px-3 py-1 rounded-full border border-white/5">
-                                        <Calendar size={14} className="text-accent" />
-                                        <span>{exp.date}</span>
-                                    </div>
-                                    {exp.date.toLowerCase().includes('present') && (
-                                        <span className="flex items-center gap-1.5 px-3 py-1 bg-green-500/10 text-green-400 text-xs font-semibold rounded-full border border-green-500/20 animate-pulse">
-                                            <span className="w-1.5 h-1.5 rounded-full bg-green-400"></span>
-                                            Present
-                                        </span>
-                                    )}
-                                </div>
+                        {/* Role & Details */}
+                        <div className="md:w-3/4 flex flex-col">
+                            <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-6">
+                                <h3 className="text-3xl font-bold text-white mb-2 md:mb-0 transition-colors group-hover:text-accent">
+                                    {exp.role}
+                                </h3>
+                                <span className="text-xl text-gray-400 italic font-light">
+                                    at {exp.company}
+                                </span>
                             </div>
 
-                            {/* Description List - Pushes Tech Stack Down */}
-                            <ul className="space-y-3 mb-8 flex-grow">
+                            <ul className="space-y-4 mb-8">
                                 {exp.description.map((item, i) => (
-                                    <li key={i} className="flex items-start gap-3 text-gray-300">
-                                        <ChevronRight size={16} className="mt-1 text-accent flex-shrink-0" />
-                                        <span className="text-sm leading-relaxed">{item}</span>
+                                    <li key={i} className="flex items-start gap-4 text-gray-500 leading-relaxed group/li">
+                                        <ChevronRight size={16} className="mt-1 flex-shrink-0 text-accent opacity-0 group-hover/li:opacity-100 transition-opacity" />
+                                        <span className="group-hover/li:text-gray-300 transition-colors">{item}</span>
                                     </li>
                                 ))}
                             </ul>
 
-                            {/* Tech Stack Tags - Always at Bottom */}
-                            <div className="flex flex-wrap gap-2 mt-auto">
+                            <div className="flex flex-wrap gap-2">
                                 {exp.tech.map((tech, tIndex) => (
-                                    <span
-                                        key={tIndex}
-                                        className="px-3 py-1 text-xs font-medium text-purple-300 bg-purple-500/10 border border-purple-500/20 rounded-full group-hover:bg-purple-500/20 group-hover:border-purple-500/30 transition-all duration-300"
-                                    >
+                                    <span key={tIndex} className="px-3 py-1 text-[10px] font-bold tracking-widest uppercase text-white/30 bg-white/5 border border-white/5 rounded-md">
                                         {tech}
                                     </span>
                                 ))}
@@ -122,4 +113,5 @@ const Experience = () => {
         </section>
     );
 };
+
 export default Experience;

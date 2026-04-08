@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowDown } from 'lucide-react';
 import gsap from 'gsap';
 
 const Hero = () => {
@@ -9,32 +9,32 @@ const Hero = () => {
         const ctx = gsap.context(() => {
             const tl = gsap.timeline();
 
-            tl.fromTo(".hero-glow",
-                { scale: 0, opacity: 0 },
-                { scale: 1, opacity: 1, duration: 2, ease: "power3.out" }
+            tl.fromTo(".hero-tag",
+                { y: 20, opacity: 0 },
+                { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
             );
 
             tl.fromTo(".hero-title",
-                { y: 50, opacity: 0 },
-                { y: 0, opacity: 1, duration: 1, ease: "power3.out" },
-                "-=1.5"
+                { y: 40, opacity: 0 },
+                { y: 0, opacity: 1, duration: 1.2, ease: "power4.out" },
+                "-=0.7"
             );
 
-            tl.fromTo(".hero-sub",
+            tl.fromTo(".hero-summary",
                 { y: 20, opacity: 0 },
                 { y: 0, opacity: 1, duration: 1, ease: "power3.out" },
                 "-=0.8"
             );
 
-            tl.fromTo(".hero-btn",
+            tl.fromTo(".hero-actions",
                 { y: 20, opacity: 0 },
-                { y: 0, opacity: 1, duration: 0.8, stagger: 0.2, ease: "back.out(1.7)" },
+                { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: "power2.out" },
                 "-=0.6"
             );
 
             tl.fromTo(".hero-social",
-                { y: 20, opacity: 0 },
-                { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" },
+                { opacity: 0 },
+                { opacity: 1, duration: 1.5, ease: "power2.out" },
                 "-=0.4"
             );
         }, heroRef);
@@ -42,52 +42,52 @@ const Hero = () => {
     }, []);
 
     return (
-        <section id="hero" ref={heroRef} className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-4">
-            {/* Background Grid */}
-            <div className="absolute inset-0 bg-grid-pattern pointer-events-none"></div>
+        <section id="hero" ref={heroRef} className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6 pt-20">
+            {/* Background Texture & Gradients */}
+            <div className="absolute inset-0 bg-grid-pattern opacity-[0.03] pointer-events-none"></div>
+            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-accent/10 blur-[120px] rounded-full pointer-events-none"></div>
 
-            {/* Main Pink/Purple Glow center */}
-            <div className="hero-glow absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full glow-blob glow-pink pointer-events-none animate-pulse-slow"></div>
+            <div className="relative z-10 max-w-5xl w-full text-center">
+                <span className="hero-tag inline-block text-accent font-mono tracking-[0.3em] uppercase text-xs mb-8">
+                    Available for New Opportunities
+                </span>
 
-            {/* Bottom Yellow/Gold Glow right */}
-            <div className="absolute -bottom-20 -right-20 w-[300px] h-[300px] rounded-full glow-blob glow-yellow pointer-events-none"></div>
-
-            <div className="relative z-10 text-center flex flex-col items-center">
-                <h1 className="hero-title text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-tight">
-                    Shruti Bhangale
+                <h1 className="hero-title text-6xl md:text-8xl lg:text-9xl font-bold text-white mb-10 tracking-tighter leading-[0.9]">
+                    Building <span className="text-gray-500">Digital</span> Experiences.
                 </h1>
 
-                <h2 className="hero-sub text-xl md:text-2xl text-gray-300 mb-10 font-medium tracking-wide">
-                    Full Stack Developer
-                </h2>
+                <div className="hero-summary max-w-2xl mx-auto mb-14 px-4">
+                    <p className="text-xl md:text-2xl text-gray-400 leading-relaxed font-light">
+                        Full Stack Developer specializing in <span className="text-white font-medium">high-performance web applications</span> and 
+                        <span className="text-white font-medium"> AI-driven solutions</span>. Delivering measurable business impact through clean code and human-centric design.
+                    </p>
+                </div>
 
-                <div className="flex flex-wrap justify-center gap-6 mb-12">
-                    <a href="#contact" className="hero-btn bg-white/5 border border-white/10 text-white px-8 py-3 rounded-full font-bold hover:bg-gradient-to-r hover:from-accent hover:to-purple-600 hover:border-transparent hover:shadow-[0_0_20px_-5px_rgba(217,70,239,0.5)] hover:scale-105 transition-all duration-300">
-                        Contact Me
+                <div className="hero-actions flex flex-wrap justify-center gap-6 mb-20">
+                    <a href="#projects" className="bg-white text-black px-10 py-4 rounded-full font-bold hover:bg-accent hover:text-white transition-all duration-300 hover:scale-105 active:scale-95 shadow-xl shadow-white/5">
+                        View Case Studies
                     </a>
-                    <a href="/resume.pdf" className="hero-btn bg-white/5 border border-white/10 text-white px-8 py-3 rounded-full font-medium hover:bg-gradient-to-r hover:from-accent hover:to-purple-600 hover:border-transparent hover:scale-105 transition-all duration-300">
-                        My Resume
+                    <a href="#contact" className="bg-transparent border border-white/10 text-white px-10 py-4 rounded-full font-medium hover:bg-white/5 transition-all duration-300">
+                        Let's Talk
                     </a>
                 </div>
 
-                <div className="hero-social flex gap-8 text-gray-400">
-                    <a href="https://github.com/shrutipb1601" target="_blank" rel="noreferrer" className="hover:text-white transition-colors hover:scale-110 transform duration-200">
-                        <Github size={28} />
+                <div className="hero-social flex justify-center gap-10 text-gray-500 border-t border-white/5 pt-10 mt-10">
+                    <a href="https://github.com/shrutipb1601" target="_blank" rel="noreferrer" className="hover:text-white transition-all hover:-translate-y-1">
+                        <Github size={24} />
                     </a>
-                    <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-blue-400 transition-colors hover:scale-110 transform duration-200">
-                        <Linkedin size={28} />
+                    <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-white transition-all hover:-translate-y-1">
+                        <Linkedin size={24} />
                     </a>
-                    <a href="mailto:shrutipb1601@gmail.com" className="hover:text-accent transition-colors hover:scale-110 transform duration-200">
-                        <Mail size={28} />
+                    <a href="mailto:shrutipb1601@gmail.com" className="hover:text-white transition-all hover:-translate-y-1">
+                        <Mail size={24} />
                     </a>
                 </div>
             </div>
 
-            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60 animate-bounce">
-                <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center p-1">
-                    <div className="w-1 h-2 bg-white rounded-full animate-scroll"></div>
-                </div>
-                <span className="text-xs uppercase tracking-widest text-white">Scroll</span>
+            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-30 animate-pulse">
+                <span className="text-[10px] uppercase tracking-[0.4em] font-bold">Scroll</span>
+                <ArrowDown size={16} />
             </div>
         </section>
     );

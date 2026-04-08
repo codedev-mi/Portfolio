@@ -10,12 +10,12 @@ const Certifications = () => {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            gsap.fromTo(".cert-col",
+            gsap.fromTo(".credential-item",
                 { y: 30, opacity: 0 },
                 {
                     y: 0,
                     opacity: 1,
-                    duration: 0.8,
+                    duration: 1,
                     stagger: 0.2,
                     ease: "power3.out",
                     scrollTrigger: {
@@ -29,83 +29,80 @@ const Certifications = () => {
     }, []);
 
     return (
-        <section id="certifications" ref={sectionRef} className="py-24 px-6 md:px-20 max-w-7xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-16 text-center">Credentials</h2>
+        <section id="certifications" ref={sectionRef} className="py-32 px-6 md:px-20 max-w-7xl mx-auto border-t border-white/5">
+            <div className="grid lg:grid-cols-12 gap-16">
+                
+                {/* Left Side: Publications */}
+                <div className="lg:col-span-5">
+                    <span className="credential-item text-accent font-mono tracking-widest uppercase text-xs mb-4 block">Scientific Contribution</span>
+                    <h2 className="credential-item text-4xl font-bold text-white mb-10 tracking-tighter">
+                        Research & <br /> <span className="text-gray-500 italic">Publications</span>
+                    </h2>
 
-            <div className="grid md:grid-cols-2 gap-12">
-                {/* Certifications Column */}
-                <div className="cert-col space-y-8">
-                    <div className="flex items-center gap-3 mb-6">
-                        <Award className="text-accent" size={28} />
-                        <h3 className="text-2xl font-bold text-white">Certifications</h3>
-                    </div>
-
-                    {/* Cert Item 1 */}
-                    <div className="group bg-[#0a0a0a] p-6 rounded-2xl border border-white/5 hover:border-accent/50 transition-all duration-300 relative overflow-hidden">
-                        <div className="absolute top-0 right-0 w-24 h-24 bg-accent/10 blur-2xl -mr-10 -mt-10 rounded-full group-hover:bg-accent/20 transition-all"></div>
-
-                        <div className="flex justify-between items-start mb-4">
-                            <div>
-                                <h4 className="text-xl font-bold text-white group-hover:text-accent transition-colors">AWS Academy Cloud Foundations</h4>
-                                <p className="text-gray-400 text-sm mt-1">Amazon Web Services</p>
-                            </div>
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" alt="AWS" className="h-8 opacity-70" />
+                    <div className="credential-item group bg-[#0d0d0d] p-8 rounded-3xl border border-white/5 hover:border-purple-500/20 transition-all duration-500">
+                        <div className="flex items-center gap-2 mb-6">
+                            <span className="bg-purple-500/10 text-purple-400 text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-md">ICEISF 2025</span>
                         </div>
-
-                        <div className="flex items-center gap-4 text-sm text-gray-500 mt-4">
-                            <span className="flex items-center gap-1"><Calendar size={14} /> 2024</span>
-                            <span className="flex items-center gap-1 text-green-500"><CheckCircle2 size={14} /> Verified</span>
-                        </div>
-                    </div>
-
-                    {/* Cert Item 2 */}
-                    <div className="group bg-[#0a0a0a] p-6 rounded-2xl border border-white/5 hover:border-accent/50 transition-all duration-300 relative overflow-hidden">
-                        <div className="absolute top-0 right-0 w-24 h-24 bg-accent/10 blur-2xl -mr-10 -mt-10 rounded-full group-hover:bg-accent/20 transition-all"></div>
-
-                        <div className="flex justify-between items-start mb-4">
-                            <div className="pr-4">
-                                <h4 className="text-xl font-bold text-white group-hover:text-accent transition-colors">Oracle Cloud Infrastructure 2025 Certified Foundations Associate</h4>
-                                <p className="text-gray-400 text-sm mt-1">Oracle</p>
-                            </div>
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg" alt="Oracle" className="h-5 opacity-70 bg-white/10 p-1 rounded" />
-                        </div>
-
-                        <div className="flex items-center gap-4 text-sm text-gray-500 mt-4">
-                            <span className="flex items-center gap-1"><Calendar size={14} /> 2025</span>
-                            <span className="flex items-center gap-1 text-green-500"><CheckCircle2 size={14} /> Verified</span>
-                        </div>
+                        <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-purple-400 transition-colors leading-tight">
+                            Carbon Footprint of Cloud Computing
+                        </h3>
+                        <p className="text-gray-500 text-sm leading-relaxed mb-8">
+                            A comparative study on the environmental overhead of large-scale cloud infrastructure and sustainable optimization strategies.
+                        </p>
+                        <a href="#" className="inline-flex items-center gap-2 text-sm font-bold text-white/40 hover:text-white transition-colors">
+                            Read Publication <ExternalLink size={14} />
+                        </a>
                     </div>
                 </div>
 
-                {/* Publications Column */}
-                <div className="cert-col space-y-8">
-                    <div className="flex items-center gap-3 mb-6">
-                        <BookOpen className="text-purple-400" size={28} />
-                        <h3 className="text-2xl font-bold text-white">Publications</h3>
-                    </div>
+                {/* Right Side: Certifications */}
+                <div className="lg:col-span-7">
+                    <span className="credential-item text-accent font-mono tracking-widest uppercase text-xs mb-4 block">Official Validation</span>
+                    <h2 className="credential-item text-4xl font-bold text-white mb-10 tracking-tighter">
+                        Technical <span className="text-gray-500 italic">Credentials</span>
+                    </h2>
 
-                    {/* Publication Item 1 */}
-                    <div className="group bg-[#0a0a0a] p-6 rounded-2xl border border-white/5 hover:border-purple-500/50 transition-all duration-300 relative overflow-hidden">
-                        <div className="absolute top-0 right-0 w-24 h-24 bg-purple-500/10 blur-2xl -mr-10 -mt-10 rounded-full group-hover:bg-purple-500/20 transition-all"></div>
-
-                        <div className="mb-4">
-                            <span className="bg-purple-500/10 text-purple-400 text-xs font-mono px-2 py-1 rounded mb-3 inline-block">ICEISF 2025</span>
-                            <h4 className="text-xl font-bold text-white leading-tight group-hover:text-purple-400 transition-colors">
-                                Carbon Footprint of Cloud Computing
-                            </h4>
+                    <div className="space-y-6">
+                        {/* Cert 1 */}
+                        <div className="credential-item flex items-center justify-between p-6 bg-[#0d0d0d] border border-white/5 rounded-2xl group hover:border-white/20 transition-all duration-500">
+                            <div className="flex items-center gap-6">
+                                <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center group-hover:bg-accent/10 transition-colors">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" alt="AWS" className="w-6 opacity-60 group-hover:opacity-100" />
+                                </div>
+                                <div>
+                                    <h4 className="text-white font-bold text-lg group-hover:text-accent transition-colors">AWS Cloud Foundations</h4>
+                                    <p className="text-gray-600 text-xs font-mono uppercase tracking-widest">Issued by Amazon Web Services</p>
+                                </div>
+                            </div>
+                            <div className="hidden md:flex items-center gap-4">
+                                <span className="text-green-500/40 text-[10px] uppercase font-bold tracking-widest flex items-center gap-1">
+                                    <CheckCircle2 size={12} /> Verified
+                                </span>
+                            </div>
                         </div>
 
-                        <p className="text-gray-400 text-sm leading-relaxed mb-6">
-                            Authored and presented a research paper analyzing the environmental impact of large-scale cloud infrastructure and sustainable optimization strategies.
-                        </p>
-
-                        <a href="#" className="inline-flex items-center gap-2 text-sm text-purple-400 hover:text-white transition-colors">
-                            Read Paper <ExternalLink size={14} />
-                        </a>
+                        {/* Cert 2 */}
+                        <div className="credential-item flex items-center justify-between p-6 bg-[#0d0d0d] border border-white/5 rounded-2xl group hover:border-white/20 transition-all duration-500">
+                            <div className="flex items-center gap-6">
+                                <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center group-hover:bg-accent/10 transition-colors">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg" alt="Oracle" className="w-8 opacity-60 group-hover:opacity-100" />
+                                </div>
+                                <div>
+                                    <h4 className="text-white font-bold text-lg group-hover:text-accent transition-colors">OCI 2025 Certified Associate</h4>
+                                    <p className="text-gray-600 text-xs font-mono uppercase tracking-widest">Issued by Oracle</p>
+                                </div>
+                            </div>
+                            <div className="hidden md:flex items-center gap-4">
+                                <span className="text-green-500/40 text-[10px] uppercase font-bold tracking-widest flex items-center gap-1">
+                                    <CheckCircle2 size={12} /> Verified
+                                </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     );
 };
+
 export default Certifications;
